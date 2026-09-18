@@ -1,0 +1,10 @@
+{
+  "name": "reddit-mention-monitor",
+  "version": "1.0.0",
+  "description": "Read-only keyword monitor for public Reddit posts. Search and listing endpoints only, application-only OAuth, no write scopes.",
+  "type": "module",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": { "typecheck": "tsc --noEmit" },
+  "devDependencies": { "typescript": "^5.6.2" }
+}
