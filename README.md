@@ -8,12 +8,14 @@ A small, read-only keyword monitor for public Reddit posts. It tells a solo deve
 - **Search and listing endpoints only.** It calls `GET /search` and `GET /r/{subreddit}/new`. Nothing else.
 - **No write scopes anywhere.** It authenticates with application-only OAuth (`grant_type=client_credentials`). No user logs in, no user scopes are requested, and the token cannot post, comment, vote, message, subscribe, or edit anything.
 - **Polls a few times daily.** The default schedule is one pass every 6 hours (4 per day). A pass runs a short list of search queries, one request at a time with a 1.1 second gap, far under Reddit's 60 requests per minute limit. On a 429 it stops the pass and waits for the next scheduled run.
+- **Single script app on my own account.** It runs under one Reddit "script" type app registered on the developer's own Reddit account. There is one client id, one deployment, and no other users or tenants.
 - **Public data only.** It reads public posts from the last week. It does not read private subreddits, direct messages, user profiles, or anything behind a login.
+- **No data resale or model training.** Nothing read from Reddit is sold, shared, republished, or used to train or fine-tune any model.
 - **No automation of replies.** It produces a list of matching posts. It never posts, comments, votes, or sends messages. Any reply is written and sent by a person.
 
 ## What it stores
 
-Per matching post: URL, title, a 300 character excerpt, author name, subreddit, created time, comment count, and the query that matched. No content is republished, used to train models, or sold. The OAuth token is cached until it expires.
+Per matching post: URL, title, a 300 character excerpt, author name, subreddit, created time, comment count, and the query that matched. The OAuth token is cached until it expires.
 
 ## Use
 
